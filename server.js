@@ -1,41 +1,155 @@
 const express = require('express');
-const leafleft = require('leaflet');
-const {client} = require('pg');
+const {Client} = require('pg');
 const client = new Client({
     host: 'localhost',
-    port : '5334',
+    port : '5432',
     database: 'gis',
     user :'renderer',
     password :'renderer'
 });
 
 const app = express();
-
+app.use(express.json());
+// the following query does this
+// Given bounding box with minLat, minLon, maxLat, maxLon we are going to search objects in the table
+// called planet_osm_point, planet_osm_roads, planet_osm_line, planet_osm_polygon if the boolean value
+// 'onlyInBox' is true otherwise we search the whole map. Each record in the previous four tables contains
+// an attribute call osm_id and this id is used to match the id in planet_osm_node table to get the coordinate.
+// Then the query result across the 4 tables are joined
+// aand sorted base on its distance from the center of the bounding box.
 app.post("/api/search", async (req,res)=>{
+	console.log(req.body);
     const {minLat, minLon, maxLat, maxLon} = req.body.bbox;
-    const search_string = req.body.searchTerm;
     const onlyInBox = req.body.onlyInBox;
+    const search_string = req.body.searchTerm;
     const query = {
         text: `
+          WITH search_results AS (
+            SELECT
+              name,
+              osm_id,
+              'line' AS type,
+              MIN(n.lat) AS min_lat,
+              MAX(n.lat) AS max_lat,
+              MIN(n.lon) AS min_lon,
+              MAX(n.lon) AS max_lon
+            FROM planet_osm_line
+            WHERE name LIKE $1
+              AND (
+                $6 = false
+                OR (
+                  $6 = true
+                  AND EXISTS (
+                    SELECT 1
+                    FROM planet_osm_nodes n
+                    WHERE planet_osm_line.osm_id = n.id
+                      AND n.lat BETWEEN $2 AND $3
+                      AND n.lon BETWEEN $4 AND $5
+                  )
+                )
+              )
+            GROUP BY name, osm_id
+      
+            UNION ALL
+      
+            SELECT
+              name,
+              osm_id,
+              'road' AS type,
+              MIN(n.lat) AS min_lat,
+              MAX(n.lat) AS max_lat,
+              MIN(n.lon) AS min_lon,
+              MAX(n.lon) AS max_lon
+            FROM planet_osm_roads
+            WHERE name LIKE $1
+              AND (
+                $6 = false
+                OR (
+                  $6 = true
+                  AND EXISTS (
+                    SELECT 1
+                    FROM planet_osm_nodes n
+                    WHERE planet_osm_roads.osm_id = n.id
+                      AND n.lat BETWEEN $2 AND $3
+                      AND n.lon BETWEEN $4 AND $5
+                  )
+                )
+              )
+            GROUP BY name, osm_id
+      
+            UNION ALL
+      
+            SELECT
+              name,
+              osm_id,
+              'polygon' AS type,
+              MIN(n.lat) AS min_lat,
+              MAX(n.lat) AS max_lat,
+              MIN(n.lon) AS min_lon,
+              MAX(n.lon) AS max_lon
+            FROM planet_osm_polygon
+            WHERE name LIKE $1
+              AND (
+                $6 = false
+                OR (
+                  $6 = true
+                  AND EXISTS (
+                    SELECT 1
+                    FROM planet_osm_nodes n
+                    WHERE planet_osm_polygon.osm_id = n.id
+                      AND n.lat BETWEEN $2 AND $3
+                      AND n.lon BETWEEN $4 AND $5
+                  )
+                )
+              )
+            GROUP BY name, osm_id
+      
+            UNION ALL
+      
+            SELECT
+              name,
+              osm_id,
+              'point' AS type,
+              n.lat AS min_lat,
+              n.lat AS max_lat,
+              n.lon AS min_lon,
+              n.lon AS max_lon
+            FROM planet_osm_point
+            JOIN planet_osm_nodes n ON planet_osm_point.osm_id = n.id
+            WHERE name LIKE $1
+              AND (
+                $6 = false
+                OR (
+                  $6 = true
+                  AND n.lat BETWEEN $2 AND $3
+                  AND n.lon BETWEEN $4 AND $5
+                )
+              )
+          )
           SELECT
-            id,
-            lon AS longitude,
-            lat AS latitude
-          FROM
-            planet_osm_nodes
-          WHERE
-            lat BETWEEN $1 AND $2
-            AND lon BETWEEN $3 AND $4
+            name,
+            JSON_BUILD_OBJECT(
+              'lat', (min_lat + max_lat) / 2,
+              'lon', (min_lon + max_lon) / 2
+            ) AS coordinates,
+            JSON_BUILD_OBJECT(
+              'minLat', min_lat,
+              'minLon', min_lon,
+              'maxLat', max_lat,
+              'maxLon', max_lon
+            ) AS bbox
+          FROM search_results
+          ORDER BY
+            ABS(min_lat - ($2 + ($3 - $2) / 2)) + ABS(min_lon - ($4 + ($5 - $4) / 2)),
+            ABS(max_lat - ($2 + ($3 - $2) / 2)) + ABS(max_lon - ($4 + ($5 - $4) / 2));
         `,
-        values: [minLat, maxLat, minLon, maxLon]
-    }
+        values: [`%${search_string}%`, minLat, maxLat, minLon, maxLon, onlyInBox]
+      };
     let result = await client.query(query);
-    console.log(result);
-
-    
+    res.status(200).json(result);
 })
 
-app.listen(80, "0.0.0.0", async () =>{
+app.listen(3000,async () =>{
     console.log("map server started");
     await client.connect();
     console.log("Postgres client connected");

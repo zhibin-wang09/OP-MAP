@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.19.2",
+    "leaflet": "^1.9.4",
     "mapnik": "^4.5.9",
     "pg": "^8.11.4"
   }
