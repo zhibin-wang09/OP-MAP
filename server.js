@@ -1,5 +1,6 @@
 const express = require('express');
 const {Client} = require('pg');
+const fetch = require('node-fetch');
 const client = new Client({
     host: 'localhost',
     port : '5432',
@@ -148,6 +149,48 @@ app.post("/api/search", async (req,res)=>{
     let result = await client.query(query);
     res.status(200).json(result);
 })
+
+
+app.get('/tiles/:z/:x/:y.png', async (req, res) => {
+  try {
+    const tileResponse = await fetch(`http://127.0.0.1:8080/tile/${req.params.z}/${req.params.x}/${req.params.y}.png`);
+    const tileBuffer = await tileResponse.buffer();
+
+    res.status(200).type('image/png').send(tileBuffer);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+const TILE_SIZE = 256;
+
+app.post('/convert', (req,res)=>{
+  const zoom = req.zoom;
+  const lat = req.lat;
+  const long = req.lon;
+
+  const scale = 1 << zoom;
+  const worldCooridnate = project(lat,lon);
+  const tileCoordinate = {
+    x: Math.floor((worldCooridnate.x * scale) / TILE_SIZE),
+    y: Math.floor((worldCooridnate.y * scale) / TILE_SIZE)
+  }
+
+  res.status(200).json(tileCoordinate);
+})
+
+function project(lat, lon){
+  let siny = Math.sin((lat * Math.PI) / 180);
+
+  // Truncating to 0.9999 effectively limits latitude to 89.189. This is
+  // about a third of a tile past the edge of the world tile.
+  siny = Math.min(Math.max(siny, -0.9999), 0.9999);
+  return {
+    x: TILE_SIZE * (0.5 + lon / 360),
+    y: TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI)),
+  };
+}
 
 app.listen(3000,async () =>{
     console.log("map server started");
