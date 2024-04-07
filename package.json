@@ -11,9 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
     "leaflet": "^1.9.4",
     "mapnik": "^4.5.9",
+    "mongodb": "^6.5.0",
     "node-fetch": "^2.7.0",
-    "pg": "^8.11.4"
+    "nodemailer": "^6.9.13",
+    "pg": "^8.11.4",
+    "random-key": "^0.3.2"
   }
 }
