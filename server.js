@@ -9,6 +9,7 @@ const ip_address = "194.113.73.249";
 const uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.3";
 const mongoClient = new MongoClient(uri); // creates the client to interact with the mongodb database
 let is_login = false;
+const CSE356ID = '65e148778849cf2582029a74';
 const transporter = nodemailer.createTransport({
 	host: ip_address,
 	service: "postfix",
@@ -165,7 +166,7 @@ app.post("/api/adduser", async function (req, res) {
 	const password = req.body.password;
 	const email = encodePlus(req.body.email);
 	console.log(email);
-	const collection = client.db("birdinspace").collection("account");
+	const collection = mongoClient.db("birdinspace").collection("account");
 	const query = { username: username, email: email };
 	if (await collection.findOne(query)) {
 		res.set("X-CSE356", CSE356ID);
@@ -183,7 +184,7 @@ app.post("/api/adduser", async function (req, res) {
 	};
 	const result = await collection.insertOne(document);
 
-	const verifyLink = `http://${ip_address}/verify?email=${email}&key=${key}`;
+	const verifyLink = `http://${ip_address}/api/verify?email=${email}&key=${key}`;
 	let mailOption = {
 		from: "root@cse356.compas.cs.stonybrook.edu",
 		to: email,
@@ -198,7 +199,7 @@ app.post("/api/adduser", async function (req, res) {
 		}
 	});
 	res.set("X-CSE356", CSE356ID);
-	res.status(200).json({ result: result, status: "OK" });
+	res.status(200).json({ result: result, status: "ok" });
 });
 
 app.get("/api/verify", async function (req, res) {
@@ -206,7 +207,7 @@ app.get("/api/verify", async function (req, res) {
 	const email = encodePlus(req.query.email);
 	const key = req.query.key;
 	const document = { email: email, key: key };
-	const collection = client.db("birdinspace").collection("account");
+	const collection = mongoClient.db("birdinspace").collection("account");
 	const result = await collection.findOne(document);
 	res.set("X-CSE356", CSE356ID);
 	if (result) {
@@ -214,7 +215,7 @@ app.get("/api/verify", async function (req, res) {
 			{ email: email, key: key },
 			{ $set: { isVerify: true } }
 		);
-		return res.status(200).json({ status: "OK" });
+		return res.status(200).json({ status: "ok" });
 	} else {
 		return res.status(200).json({ status: "ERROR" });
 	}
@@ -226,14 +227,14 @@ app.post("/api/login", async function (req, res) {
 	const password = req.body.password;
 
 	const document = { username: username, password: password };
-	const collection = client.db("birdinspace").collection("account");
+	const collection = mongoClient.db("birdinspace").collection("account");
 	const result = await collection.findOne(document);
 	res.set("X-CSE356", CSE356ID);
 
 	is_login = true;
-	if (result) {
+	if (result && result.isVerify) {
 		req.session.username = username;
-		return res.status(200).json({ status: "OK" });
+		return res.status(200).json({ status: "ok" });
 	} else {
 		return res.status(200).json({ status: "ERROR" });
 	}
@@ -245,10 +246,24 @@ app.post("/api/logout", async function (req, res) {
 	is_login = false;
 	if (req.session.username) {
 		req.session.username = null;
-		return res.status(200).json({ status: "OK" });
+		return res.status(200).json({ status: "ok" });
 	} else {
 		return res.status(200).json({ status: "ERROR" });
 	}
+});
+
+app.get("/api/user", async function(req,res){
+	console.log("GET user");
+	const username = req.session.username;
+	const document = { username: username};
+	const collection = mongoClient.db("birdinspace").collection("account");
+	const result = await collection.findOne(document);
+	if(username){
+		return res.status(200).json({loggedin: true, username : username});
+	}else{
+		return res.status(400).json({loggedin: false});
+	}
+
 });
 
 app.get("/", (req, res) => {
