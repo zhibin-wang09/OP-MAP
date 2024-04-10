@@ -277,7 +277,19 @@ app.post('/api/route', async function(req,res){
 		`http://194.113.75.144:8989/route?point=${source_lat},${source_lon}&point=${destination_lat},${destination_lon}&profile=car&points_encoded=false`);
 	const result = await routeResponse.json();
 	console.log(JSON.stringify(result,null,4));
-
+	const coordinates = result.paths.points.coordinates; // the lat and lon for the roads in instruction
+	const instructions = result.instructions; // the list of roads to take to get the destination
+	const route = [];
+	instructions.map((road) => {
+		route.push({
+			"description": road.street_name,
+			"distance": road.distance,
+			"coordinates": {
+				"lat": coordinates[road.interval[0]][0],
+				"lon": coordinates[road.interval[0]][1],
+			}
+		})
+	})
 	res.status(200).json({status:'ok'});
 })
 
