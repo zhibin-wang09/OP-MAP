@@ -1,11 +1,12 @@
 const express = require("express");
+const zlib = require('zlib');
 const { Client } = require("pg");
 const fetch = require("node-fetch");
 const { MongoClient } = require("mongodb");
 var rand = require("random-key");
 var nodemailer = require("nodemailer");
 var session = require('express-session');
-const ip_address = "194.113.73.249";
+const ip_address = "194.113.75.144";
 const uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.3";
 const mongoClient = new MongoClient(uri); // creates the client to interact with the mongodb database
 let is_login = false;
@@ -261,10 +262,24 @@ app.get("/api/user", async function(req,res){
 	if(username){
 		return res.status(200).json({loggedin: true, username : username});
 	}else{
-		return res.status(400).json({loggedin: false});
+		return res.status(200).json({loggedin: false});
 	}
 
 });
+
+app.post('/api/route', async function(req,res){
+	const source_lat = req.body.source.lat;	
+	const source_lon = req.body.source.lon;	
+	const destination_lat = req.body.destination.lat;	
+	const destination_lon = req.body.destination.lon;	
+
+	const routeResponse = await fetch(
+		`http://194.113.75.144:8989/route?point=${source_lat},${source_lon}&point=${destination_lat},${destination_lon}&profile=car&points_encoded=false`);
+	const result = await routeResponse.json();
+	console.log(JSON.stringify(result,null,4));
+
+	res.status(200).json({status:'ok'});
+})
 
 app.get("/", (req, res) => {
 	res.set("X-CSE356", "65e148778849cf2582029a74");
