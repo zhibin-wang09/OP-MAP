@@ -244,6 +244,7 @@ app.post("/api/login", async function (req, res) {
 app.post("/api/logout", async function (req, res) {
 	console.log("logout");
 
+	res.set("X-CSE356", CSE356ID);
 	is_login = false;
 	if (req.session.username) {
 		req.session.username = null;
@@ -259,6 +260,7 @@ app.get("/api/user", async function(req,res){
 	const document = { username: username};
 	const collection = mongoClient.db("birdinspace").collection("account");
 	const result = await collection.findOne(document);
+	res.set("X-CSE356", CSE356ID);
 	if(username){
 		return res.status(200).json({loggedin: true, username : username});
 	}else{
@@ -291,7 +293,8 @@ app.post('/api/route', async function(req,res){
 		})
 	})
 	console.log(route);
-	res.status(200).json({status:'ok'});
+	res.set("X-CSE356", CSE356ID);
+	return res.status(200).json(route);
 })
 
 app.get("/", (req, res) => {
