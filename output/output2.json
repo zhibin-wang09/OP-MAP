@@ -1,0 +1,142 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $LM-ASV-PmX',
+  email: 'grader+LM-ASV-PmX@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'TSCIhGfLVSIo4M3rWIc1'
+}
+login
+/api/adduser {
+  username: 'Grader $LM-ASV-PmX',
+  email: 'grader+LM-ASV-PmX@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'TSCIhGfLVSIo4M3rWIc1'
+}
+adduser
+grader+LM-ASV-PmX@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+LM-ASV-PmX@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 10,
+  messageTime: 46,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as 07A46272BB9',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+LM-ASV-PmX@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<0f281469-3217-85e4-330b-23797b40b6fd@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+LM-ASV-PmX@grading.cse356.compas.cs.stonybrook.edu&key=CgDltmdqXxeF0IGo {}
+verify
+/api/adduser {
+  username: 'Grader $LM-ASV-PmX',
+  email: 'grader+LM-ASV-PmX@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'TSCIhGfLVSIo4M3rWIc1'
+}
+adduser
+grader+LM-ASV-PmX@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $LM-ASV-PmX',
+  email: 'grader+LM-ASV-PmX@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'TSCIhGfLVSIo4M3rWIc1'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 10 }
+/convert { lat: 42.079758, long: -73.710636, zoom: 10 }
+/tiles/10/291/375.png {}
+Tile response for 10/291/375.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/10/291/375.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/10/291/376.png {}
+Tile response for 10/291/376.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/10/291/376.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/10/291/375.png {}
+Tile response for 10/291/375.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/10/291/375.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/ {}
+/favicon.ico {}

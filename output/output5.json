@@ -1,0 +1,140 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $Zs8nZ5hDQ7',
+  email: 'grader+Zs8nZ5hDQ7@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'OvDbeM7U84A-tCPU65wS'
+}
+login
+/api/adduser {
+  username: 'Grader $Zs8nZ5hDQ7',
+  email: 'grader+Zs8nZ5hDQ7@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'OvDbeM7U84A-tCPU65wS'
+}
+adduser
+grader+Zs8nZ5hDQ7@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+Zs8nZ5hDQ7@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 11,
+  messageTime: 44,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as A9C92272BBC',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+Zs8nZ5hDQ7@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<f047d871-8bf7-3b89-ad66-f37b2ca92aa3@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+Zs8nZ5hDQ7@grading.cse356.compas.cs.stonybrook.edu&key=ersSO9ECIedJggXF {}
+verify
+/api/adduser {
+  username: 'Grader $Zs8nZ5hDQ7',
+  email: 'grader+Zs8nZ5hDQ7@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'OvDbeM7U84A-tCPU65wS'
+}
+adduser
+grader+Zs8nZ5hDQ7@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $Zs8nZ5hDQ7',
+  email: 'grader+Zs8nZ5hDQ7@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'OvDbeM7U84A-tCPU65wS'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 12 }
+/convert { lat: 42.079758, long: -73.710636, zoom: 12 }
+/tiles/12/1164/1501.png {}
+Tile response for 12/1164/1501.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/12/1164/1501.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/12/1164/1502.png {}
+Tile response for 12/1164/1502.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/12/1164/1502.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/12/1164/1501.png {}
+Tile response for 12/1164/1501.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/12/1164/1501.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}

@@ -1,0 +1,240 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $3q2l0OWp5n',
+  email: 'grader+3q2l0OWp5n@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'GJJHD7Fr17yxU5mhNdJu'
+}
+login
+/api/adduser {
+  username: 'Grader $3q2l0OWp5n',
+  email: 'grader+3q2l0OWp5n@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'GJJHD7Fr17yxU5mhNdJu'
+}
+adduser
+grader+3q2l0OWp5n@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+3q2l0OWp5n@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 14,
+  messageTime: 49,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as 37948272BC3',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+3q2l0OWp5n@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<78f1b37d-9ae0-0669-1322-c1e3aa3b1095@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+3q2l0OWp5n@grading.cse356.compas.cs.stonybrook.edu&key=mBbwW7iNtqkWdrEl {}
+verify
+/api/adduser {
+  username: 'Grader $3q2l0OWp5n',
+  email: 'grader+3q2l0OWp5n@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'GJJHD7Fr17yxU5mhNdJu'
+}
+adduser
+grader+3q2l0OWp5n@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $3q2l0OWp5n',
+  email: 'grader+3q2l0OWp5n@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'GJJHD7Fr17yxU5mhNdJu'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 15 }
+/convert { lat: 42.079758, long: -73.710636, zoom: 15 }
+/tiles/15/9603/12014.png {}
+Tile response for 15/9603/12014.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9603/12014.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/15/9603/12015.png {}
+Tile response for 15/9603/12015.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9603/12015.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/15/9603/12014.png {}
+Tile response for 15/9603/12014.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9603/12014.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 42.12292414869949,
+    minLon: -77.65211382505093,
+    maxLat: 43.266745263658805,
+    maxLon: -76.99157764448327
+  },
+  onlyInBox: true,
+  searchTerm: 'McKeever'
+}
+/api/route {
+  source: { lat: 40.9073277, lon: -73.10816942 },
+  destination: { lat: 40.914199, lon: -73.124678 }
+}
+[
+  {
+    description: '',
+    distance: 25.735,
+    coordinates: { lat: -73.108188, lon: 40.907328 }
+  },
+  {
+    description: '',
+    distance: 193.282,
+    coordinates: { lat: -73.108373, lon: 40.90723 }
+  },
+  {
+    description: '',
+    distance: 129.498,
+    coordinates: { lat: -73.110457, lon: 40.906895 }
+  },
+  {
+    description: '',
+    distance: 39.456,
+    coordinates: { lat: -73.1111, lon: 40.90794 }
+  },
+  {
+    description: 'Health Sciences Drive',
+    distance: 701.803,
+    coordinates: { lat: -73.11153, lon: 40.908013 }
+  },
+  {
+    description: 'Health Sciences Drive',
+    distance: 458.293,
+    coordinates: { lat: -73.113874, lon: 40.913648 }
+  },
+  {
+    description: 'Circle Road',
+    distance: 110.356,
+    coordinates: { lat: -73.118844, lon: 40.915252 }
+  },
+  {
+    description: 'John S. Toll Drive',
+    distance: 293.055,
+    coordinates: { lat: -73.118337, lon: 40.916165 }
+  },
+  {
+    description: '',
+    distance: 25.171,
+    coordinates: { lat: -73.121495, lon: 40.916672 }
+  },
+  {
+    description: 'John S. Toll Drive',
+    distance: 882.053,
+    coordinates: { lat: -73.121452, lon: 40.916473 }
+  },
+  {
+    description: 'Campus Drive',
+    distance: 368.052,
+    coordinates: { lat: -73.128659, lon: 40.913503 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.124717, lon: 40.914191 }
+  }
+]
+/turn/-73.108188,40.90723/-73.108373,40.907328.png {}
+[tlLat, tlLon] 40.90723
+[brLat, brLon] 40.907328
+[centerLat, centerLon] 40.907279
+[latDiff, lonDiff, maxDiff, zoom] 0.0001850000000018781 0.00009800000000126374 0.0001850000000018781 18
+[centertile]  { x: 160859, y: 210646 }
+[tlPixel,brPixel]  { x: 41180092, y: 53925372 } { x: 41180110, y: 53925490 }
+[tlRelativePixel,brRelativePixel]  { x: 188, y: -4 } { x: 206, y: 114 }
+/turn/-73.124717,40.913503/-73.128659,40.914191.png {}
+[tlLat, tlLon] 40.913503
+[brLat, brLon] 40.914191
+[centerLat, centerLon] 40.913847000000004
+[latDiff, lonDiff, maxDiff, zoom] 0.003941999999995005 0.0006880000000037967 0.003941999999995005 14
+[centertile]  { x: 10054, y: 13168 }
+[tlPixel,brPixel]  { x: 2573828, y: 3370998 } { x: 2573836, y: 3371157 }
+[tlRelativePixel,brRelativePixel]  { x: 4, y: -10 } { x: 12, y: 149 }
+/turn/-73.108188,40.90723/-73.108373,40.907328.png {}
+[tlLat, tlLon] 40.90723
+[brLat, brLon] 40.907328
+[centerLat, centerLon] 40.907279
+[latDiff, lonDiff, maxDiff, zoom] 0.0001850000000018781 0.00009800000000126374 0.0001850000000018781 18
+[centertile]  { x: 160859, y: 210646 }
+[tlPixel,brPixel]  { x: 41180092, y: 53925372 } { x: 41180110, y: 53925490 }
+[tlRelativePixel,brRelativePixel]  { x: 188, y: -4 } { x: 206, y: 114 }

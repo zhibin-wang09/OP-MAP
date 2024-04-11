@@ -1,0 +1,402 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $eik0rkWojn',
+  email: 'grader+eik0rkWojn@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'hh2LrdsltMwXPE_ydeUM'
+}
+login
+/api/adduser {
+  username: 'Grader $eik0rkWojn',
+  email: 'grader+eik0rkWojn@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'hh2LrdsltMwXPE_ydeUM'
+}
+adduser
+grader+eik0rkWojn@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+eik0rkWojn@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 11,
+  messageTime: 44,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as 0ED0B272BD5',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+eik0rkWojn@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<b55c7876-e88a-262e-5a56-ee9b3a39b18a@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+eik0rkWojn@grading.cse356.compas.cs.stonybrook.edu&key=dzQt3ZWoWP5lBzbT {}
+verify
+/api/adduser {
+  username: 'Grader $eik0rkWojn',
+  email: 'grader+eik0rkWojn@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'hh2LrdsltMwXPE_ydeUM'
+}
+adduser
+grader+eik0rkWojn@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $eik0rkWojn',
+  email: 'grader+eik0rkWojn@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'hh2LrdsltMwXPE_ydeUM'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 14 }
+Converted x,y 4607 6004
+/convert { lat: 42.079758, long: -73.710636, zoom: 14 }
+Converted x,y 4837 6077
+/tiles/14/4685/6016.png {}
+Tile response for 14/4685/6016.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/14/4685/6016.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/14/4685/6017.png {}
+Tile response for 14/4685/6017.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/14/4685/6017.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/14/4685/6016.png {}
+Tile response for 14/4685/6016.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/14/4685/6016.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 44.04455885930439,
+    minLon: -74.73261970908,
+    maxLat: 44.470550683904946,
+    maxLon: -72.21720391148622
+  },
+  onlyInBox: true,
+  searchTerm: 'Shackport'
+}
+/api/route {
+  source: { lat: 40.74844, lon: -73.98457 },
+  destination: { lat: 40.914199, lon: -73.124678 }
+}
+[
+  {
+    description: 'West 34th Street',
+    distance: 318.83,
+    coordinates: { lat: -73.984569, lon: 40.748441 }
+  },
+  {
+    description: 'Park Avenue',
+    distance: 162.039,
+    coordinates: { lat: -73.981253, lon: 40.74706 }
+  },
+  {
+    description: 'East 36th Street',
+    distance: 517.108,
+    coordinates: { lat: -73.98031, lon: 40.748329 }
+  },
+  {
+    description: '',
+    distance: 156.826,
+    coordinates: { lat: -73.974938, lon: 40.746079 }
+  },
+  {
+    description: '',
+    distance: 2105.342,
+    coordinates: { lat: -73.973193, lon: 40.745607 }
+  },
+  {
+    description: '',
+    distance: 91.314,
+    coordinates: { lat: -73.952521, lon: 40.741355 }
+  },
+  {
+    description: '',
+    distance: 1685.597,
+    coordinates: { lat: -73.951451, lon: 40.741287 }
+  },
+  {
+    description: '',
+    distance: 603.956,
+    coordinates: { lat: -73.932638, lon: 40.737155 }
+  },
+  {
+    description: '',
+    distance: 62584.215,
+    coordinates: { lat: -73.925748, lon: 40.735672 }
+  },
+  {
+    description: '',
+    distance: 1271.608,
+    coordinates: { lat: -73.231766, lon: 40.806919 }
+  },
+  {
+    description: 'Wheeler Road',
+    distance: 2679.828,
+    coordinates: { lat: -73.216816, lon: 40.808494 }
+  },
+  {
+    description: 'Hauppauge Boulevard',
+    distance: 594.074,
+    coordinates: { lat: -73.201215, lon: 40.825603 }
+  },
+  {
+    description: 'Nesconset-Port Jefferson Highway',
+    distance: 8151.29,
+    coordinates: { lat: -73.198236, lon: 40.830336 }
+  },
+  {
+    description: 'Hallock Road',
+    distance: 1553.601,
+    coordinates: { lat: -73.12375, lon: 40.873061 }
+  },
+  {
+    description: 'Stony Brook Road',
+    distance: 1404.752,
+    coordinates: { lat: -73.123302, lon: 40.88625 }
+  },
+  {
+    description: 'South Drive',
+    distance: 913.257,
+    coordinates: { lat: -73.129615, lon: 40.897855 }
+  },
+  {
+    description: 'Marburger Drive',
+    distance: 880.348,
+    coordinates: { lat: -73.121897, lon: 40.902049 }
+  },
+  {
+    description: 'Circle Road',
+    distance: 677.756,
+    coordinates: { lat: -73.123046, lon: 40.909695 }
+  },
+  {
+    description: 'Campus Drive',
+    distance: 431.666,
+    coordinates: { lat: -73.129293, lon: 40.913193 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.124717, lon: 40.914191 }
+  }
+]
+/turn/-73.981253,40.74706/-73.984569,40.748441.png {}
+[tlLat, tlLon] -73.981253
+[brLat, brLon] -73.984569
+[centerLat, centerLon] -73.982911
+[latDiff, lonDiff, maxDiff, zoom] 0.001381000000002075 0.0033159999999980982 0.0033159999999980982 14
+[centertile]  { x: 4824, y: 6157 }
+[tlPixel,brPixel]  { x: 1235207, y: 1576451 } { x: 1235169, y: 1576429 }
+[tlRelativePixel,brRelativePixel]  { x: 263, y: 259 } { x: 225, y: 237 }
+/turn/-73.124717,40.913193/-73.129293,40.914191.png {}
+[tlLat, tlLon] -73.124717
+[brLat, brLon] -73.129293
+[centerLat, centerLon] -73.127005
+[latDiff, lonDiff, maxDiff, zoom] 0.000998000000002719 0.0045760000000001355 0.0045760000000001355 14
+[centertile]  { x: 4863, y: 6147 }
+[tlPixel,brPixel]  { x: 1245187, y: 1573892 } { x: 1245133, y: 1573877 }
+[tlRelativePixel,brRelativePixel]  { x: 259, y: 260 } { x: 205, y: 245 }
+/turn/-73.981253,40.74706/-73.984569,40.748441.png {}
+[tlLat, tlLon] -73.981253
+[brLat, brLon] -73.984569
+[centerLat, centerLon] -73.982911
+[latDiff, lonDiff, maxDiff, zoom] 0.001381000000002075 0.0033159999999980982 0.0033159999999980982 14
+[centertile]  { x: 4824, y: 6157 }
+[tlPixel,brPixel]  { x: 1235207, y: 1576451 } { x: 1235169, y: 1576429 }
+[tlRelativePixel,brRelativePixel]  { x: 263, y: 259 } { x: 225, y: 237 }
+/api/route {
+  source: { lat: 40.90477, lon: -73.12624 },
+  destination: { lat: 40.911123, lon: -73.13397 }
+}
+[
+  {
+    description: 'Mills Road',
+    distance: 551.759,
+    coordinates: { lat: -73.126321, lon: 40.904949 }
+  },
+  {
+    description: 'Mills Road',
+    distance: 70.089,
+    coordinates: { lat: -73.131217, lon: 40.904865 }
+  },
+  {
+    description: 'Stony Brook Road',
+    distance: 426.184,
+    coordinates: { lat: -73.13204, lon: 40.904766 }
+  },
+  {
+    description: 'Stony Brook Road',
+    distance: 275.255,
+    coordinates: { lat: -73.135072, lon: 40.907405 }
+  },
+  {
+    description: 'Mount Road',
+    distance: 224.994,
+    coordinates: { lat: -73.135472, lon: 40.909743 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.133962, lon: 40.911137 }
+  }
+]
+/turn/-73.126321,40.904865/-73.131217,40.904949.png {}
+[tlLat, tlLon] -73.126321
+[brLat, brLon] -73.131217
+[centerLat, centerLon] -73.128769
+[latDiff, lonDiff, maxDiff, zoom] 0.00008400000000108321 0.004896000000002232 0.004896000000002232 14
+[centertile]  { x: 4863, y: 6148 }
+[tlPixel,brPixel]  { x: 1245168, y: 1574021 } { x: 1245111, y: 1574020 }
+[tlRelativePixel,brRelativePixel]  { x: 240, y: 133 } { x: 183, y: 132 }
+/turn/-73.133962,40.909743/-73.135472,40.911137.png {}
+[tlLat, tlLon] -73.133962
+[brLat, brLon] -73.135472
+[centerLat, centerLon] -73.134717
+[latDiff, lonDiff, maxDiff, zoom] 0.0013939999999976749 0.0015099999999961256 0.0015099999999961256 15
+[centertile]  { x: 9727, y: 12296 }
+[tlPixel,brPixel]  { x: 2490159, y: 3147892 } { x: 2490123, y: 3147849 }
+[tlRelativePixel,brRelativePixel]  { x: 47, y: 116 } { x: 11, y: 73 }
+/turn/-73.126321,40.904865/-73.131217,40.904949.png {}
+[tlLat, tlLon] -73.126321
+[brLat, brLon] -73.131217
+[centerLat, centerLon] -73.128769
+[latDiff, lonDiff, maxDiff, zoom] 0.00008400000000108321 0.004896000000002232 0.004896000000002232 14
+[centertile]  { x: 4863, y: 6148 }
+[tlPixel,brPixel]  { x: 1245168, y: 1574021 } { x: 1245111, y: 1574020 }
+[tlRelativePixel,brRelativePixel]  { x: 240, y: 133 } { x: 183, y: 132 }
+/api/route {
+  source: { lat: 40.91285415, lon: -73.1239866 },
+  destination: { lat: 40.914199, lon: -73.124678 }
+}
+[
+  {
+    description: 'Engineering Drive',
+    distance: 51.775,
+    coordinates: { lat: -73.123988, lon: 40.912855 }
+  },
+  {
+    description: 'Engineering Drive',
+    distance: 16.701,
+    coordinates: { lat: -73.123827, lon: 40.913303 }
+  },
+  {
+    description: 'Engineering Drive',
+    distance: 324.206,
+    coordinates: { lat: -73.124025, lon: 40.913313 }
+  },
+  {
+    description: 'Circle Road',
+    distance: 345.532,
+    coordinates: { lat: -73.126299, lon: 40.911093 }
+  },
+  {
+    description: 'Campus Drive',
+    distance: 431.666,
+    coordinates: { lat: -73.129293, lon: 40.913193 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.124717, lon: 40.914191 }
+  }
+]
+/turn/-73.123827,40.912855/-73.123988,40.913303.png {}
+[tlLat, tlLon] -73.123827
+[brLat, brLon] -73.123988
+[centerLat, centerLon] -73.1239075
+[latDiff, lonDiff, maxDiff, zoom] 0.0004479999999986717 0.000160999999991418 0.0004479999999986717 17
+[centertile]  { x: 38912, y: 49184 }
+[tlPixel,brPixel]  { x: 9961581, y: 12591185 } { x: 9961566, y: 12591129 }
+[tlRelativePixel,brRelativePixel]  { x: 109, y: 81 } { x: 94, y: 25 }
+/turn/-73.124717,40.913193/-73.129293,40.914191.png {}
+[tlLat, tlLon] -73.124717
+[brLat, brLon] -73.129293
+[centerLat, centerLon] -73.127005
+[latDiff, lonDiff, maxDiff, zoom] 0.000998000000002719 0.0045760000000001355 0.0045760000000001355 14
+[centertile]  { x: 4863, y: 6147 }
+[tlPixel,brPixel]  { x: 1245187, y: 1573892 } { x: 1245133, y: 1573877 }
+[tlRelativePixel,brRelativePixel]  { x: 259, y: 260 } { x: 205, y: 245 }
+/turn/-73.123827,40.912855/-73.123988,40.913303.png {}
+[tlLat, tlLon] -73.123827
+[brLat, brLon] -73.123988
+[centerLat, centerLon] -73.1239075
+[latDiff, lonDiff, maxDiff, zoom] 0.0004479999999986717 0.000160999999991418 0.0004479999999986717 17
+[centertile]  { x: 38912, y: 49184 }
+[tlPixel,brPixel]  { x: 9961581, y: 12591185 } { x: 9961566, y: 12591129 }
+[tlRelativePixel,brRelativePixel]  { x: 109, y: 81 } { x: 94, y: 25 }

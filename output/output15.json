@@ -1,0 +1,178 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $cDVGhNLfno',
+  email: 'grader+cDVGhNLfno@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'Qi3i-bIaYx0LBRcMdVx5'
+}
+login
+/api/adduser {
+  username: 'Grader $cDVGhNLfno',
+  email: 'grader+cDVGhNLfno@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'Qi3i-bIaYx0LBRcMdVx5'
+}
+adduser
+grader+cDVGhNLfno@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+cDVGhNLfno@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 13,
+  messageTime: 45,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as 14F1A272BCF',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+cDVGhNLfno@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<7697e317-7637-5c74-ca9a-4b0d6b146f83@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+cDVGhNLfno@grading.cse356.compas.cs.stonybrook.edu&key=4sgwkNUxncC4kmCH {}
+verify
+/api/adduser {
+  username: 'Grader $cDVGhNLfno',
+  email: 'grader+cDVGhNLfno@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'Qi3i-bIaYx0LBRcMdVx5'
+}
+adduser
+grader+cDVGhNLfno@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $cDVGhNLfno',
+  email: 'grader+cDVGhNLfno@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'Qi3i-bIaYx0LBRcMdVx5'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 11 }
+Converted x,y 575 750
+/convert { lat: 42.079758, long: -73.710636, zoom: 11 }
+Converted x,y 604 759
+/tiles/11/580/758.png {}
+Tile response for 11/580/758.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/11/580/758.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/11/580/759.png {}
+Tile response for 11/580/759.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/11/580/759.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/11/580/758.png {}
+Tile response for 11/580/758.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/11/580/758.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 44.218678419420144,
+    minLon: -74.62428546660536,
+    maxLat: 46.454326493411415,
+    maxLon: -70.32005058572457
+  },
+  onlyInBox: true,
+  searchTerm: 'Whig Hill'
+}
+/api/route {
+  source: { lat: 40.781393, lon: -73.962515 },
+  destination: { lat: 40.764039, lon: -73.973236 }
+}
+[
+  {
+    description: '86th Street Transverse',
+    distance: 22.452,
+    coordinates: { lat: -73.9625, lon: 40.781411 }
+  },
+  {
+    description: '86th Street Transverse',
+    distance: 184.02,
+    coordinates: { lat: -73.962725, lon: 40.781519 }
+  },
+  {
+    description: '5th Avenue',
+    distance: 2059.572,
+    coordinates: { lat: -73.961363, lon: 40.780232 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.97321, lon: 40.764028 }
+  }
+]

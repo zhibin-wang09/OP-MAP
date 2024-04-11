@@ -39,75 +39,75 @@ app.use((req, res, next) => {
 });
 
 app.post("/api/search", async (req, res) => {
-	const { bbox, onlyInBox, searchTerm } = req.body;
-	const { minLat, minLon, maxLat, maxLon } = bbox;
+  const { bbox, onlyInBox, searchTerm } = req.body;
+  const { minLat, minLon, maxLat, maxLon } = bbox;
 
-	let selectClause = onlyInBox
-		? `SELECT name, ST_AsGeoJSON(ST_Centroid(ST_Intersection(way, ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${minLat}, 4326)))) AS coordinates, ST_AsGeoJSON(ST_Envelope(way)) AS bbox`
-		: `SELECT name, ST_AsGeoJSON(ST_Centroid(way)) AS coordinates, ST_AsGeoJSON(ST_Envelope(way)) AS bbox`;
+  let selectClause = onlyInBox
+    ? `SELECT name, ST_AsGeoJSON(ST_Centroid(ST_Intersection(way, ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)))) AS coordinates, ST_AsGeoJSON(ST_Envelope(way)) AS bbox`
+    : `SELECT name, ST_AsGeoJSON(ST_Centroid(way)) AS coordinates, ST_AsGeoJSON(ST_Envelope(way)) AS bbox`;
 
-	let sqlQuery = `${selectClause}
-  FROM (
-    SELECT name, way FROM planet_osm_point WHERE name ILIKE $1
-    UNION ALL
-    SELECT name, way FROM planet_osm_roads WHERE name ILIKE $1
-    UNION ALL
-    SELECT name, way FROM planet_osm_line WHERE name ILIKE $1
-    UNION ALL
-    SELECT name, way FROM planet_osm_polygon WHERE name ILIKE $1
-  ) AS sub`;
+  let sqlQuery = `${selectClause}
+    FROM (
+      SELECT name, way FROM planet_osm_point WHERE name ILIKE $1
+      UNION ALL
+      SELECT name, way FROM planet_osm_roads WHERE name ILIKE $1
+      UNION ALL
+      SELECT name, way FROM planet_osm_line WHERE name ILIKE $1
+      UNION ALL
+      SELECT name, way FROM planet_osm_polygon WHERE name ILIKE $1
+    ) AS sub`;
 
-	if (onlyInBox) {
-		sqlQuery += ` WHERE sub.way && ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)`;
-	}
+  if (onlyInBox) {
+    sqlQuery += ` WHERE sub.way && ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)`;
+  }
 
-	try {
-		const result = await client.query(sqlQuery, [`%${searchTerm}%`]); // Parameterized query to prevent SQL injection
-		const formattedResults = result.rows.map((row) => {
-			// Parse GeoJSON safely
-			const coordinatesGeoJSON = JSON.parse(row.coordinates);
-			const bboxGeoJSON = JSON.parse(row.bbox);
+  try {
+    const result = await client.query(sqlQuery, [`%${searchTerm}%`]); // Parameterized query to prevent SQL injection
+    const formattedResults = result.rows.map((row) => {
+      // Parse GeoJSON safely
+      const coordinatesGeoJSON = JSON.parse(row.coordinates);
+      const bboxGeoJSON = JSON.parse(row.bbox);
 
-			let lat,
-				lon,
-				minLat = Infinity,
-				maxLat = -Infinity,
-				minLon = Infinity,
-				maxLon = -Infinity;
+      let lat,
+        lon,
+        minLat = Infinity,
+        maxLat = -Infinity,
+        minLon = Infinity,
+        maxLon = -Infinity;
 
-			// Extract coordinates for 'Point'
-			if (coordinatesGeoJSON.type === "Point") {
-				[lon, lat] = coordinatesGeoJSON.coordinates;
-			}
+      // Extract coordinates for 'Point'
+      if (coordinatesGeoJSON.type === "Point") {
+        [lon, lat] = coordinatesGeoJSON.coordinates;
+      }
 
-			// Assuming bbox is a 'Polygon' and extracting its bounds
-			if (
-				bboxGeoJSON.type === "Polygon" &&
-				bboxGeoJSON.coordinates.length > 0
-			) {
-				for (let coord of bboxGeoJSON.coordinates[0]) {
-					const [longitude, latitude] = coord;
-					minLat = Math.min(minLat, latitude);
-					maxLat = Math.max(maxLat, latitude);
-					minLon = Math.min(minLon, longitude);
-					maxLon = Math.max(maxLon, longitude);
-				}
-			}
+      // Assuming bbox is a 'Polygon' and extracting its bounds
+      if (
+        bboxGeoJSON.type === "Polygon" &&
+        bboxGeoJSON.coordinates.length > 0
+      ) {
+        for (let coord of bboxGeoJSON.coordinates[0]) {
+          const [longitude, latitude] = coord;
+          minLat = Math.min(minLat, latitude);
+          maxLat = Math.max(maxLat, latitude);
+          minLon = Math.min(minLon, longitude);
+          maxLon = Math.max(maxLon, longitude);
+        }
+      }
 
-			return {
-				name: row.name,
-				coordinates:
-				lat !== undefined && lon !== undefined ? { lat, lon } : undefined,
-				bbox: isFinite(minLat) ? { minLat, minLon, maxLat, maxLon } : undefined,
-			};
-		});
-		res.set("X-CSE356", "65e148778849cf2582029a74");
-		res.status(200).json(formattedResults);
-	} catch (error) {
-		console.error("Error executing query:", error.stack);
-		res.set("X-CSE356", "65e148778849cf2582029a74");
-		res.status(500).send("Error executing query");
-	}
+      return {
+        name: row.name,
+        coordinates:
+          lat !== undefined && lon !== undefined ? { lat, lon } : undefined,
+        bbox: isFinite(minLat) ? { minLat, minLon, maxLat, maxLon } : undefined,
+      };
+    });
+    res.set("X-CSE356", CSE356ID);
+    res.status(200).json(formattedResults);
+  } catch (error) {
+    console.error("Error executing query:", error.stack);
+    res.set("X-CSE356", CSE356ID);
+    res.status(500).send("Error executing query");
+  }
 });
 
 app.get("/tiles/:z/:x/:y.png", async (req, res) => {
@@ -133,19 +133,20 @@ app.get("/tiles/:z/:x/:y.png", async (req, res) => {
 });
 
 app.post("/convert", (req, res) => {
-	const { zoom, lat, long } = req.body; //  'long' to 'lon'
+	const { zoom, lat, long } = req.body;
 
 	const latRad = (lat * Math.PI) / 180;
 	const n = Math.pow(2, zoom);
 	const xtile = Math.floor(n * ((long + 180) / 360)); //  'long' to 'lon'
 	const ytile = Math.floor(
-		((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2) * n
+	    ((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2) * n
 	);
 
 	const tileCoordinate = {
 		x_tile: xtile,
 		y_tile: ytile,
 	};
+	console.log("Converted x,y",xtile,ytile)
 
 	res.set("X-CSE356", "65e148778849cf2582029a74");
 	res.status(200).json(tileCoordinate);
@@ -270,6 +271,7 @@ app.get("/api/user", async function(req,res){
 });
 
 app.post('/api/route', async function(req,res){
+	if(!is_login) return res.status(200).json({status: "ERROR"});
 	const source_lat = req.body.source.lat;	
 	const source_lon = req.body.source.lon;	
 	const destination_lat = req.body.destination.lat;	
@@ -296,6 +298,102 @@ app.post('/api/route', async function(req,res){
 	res.set("X-CSE356", CSE356ID);
 	return res.status(200).json(route);
 })
+
+app.get('/turn/:tl/:br.png', async (req, res) => {
+	try {
+	  const [tlLon,tlLat] = req.params.tl.split(',');
+	  console.log(`[tlLat, tlLon] ${tlLat,tlLon}`)
+	  const [brLon,brLat] = req.params.br.split(',');
+	  console.log(`[brLat, brLon] ${brLat, brLon}`)
+  
+	  // Calculate the center coordinates
+	  const centerLat = (parseFloat(tlLat) + parseFloat(brLat)) / 2;
+	  const centerLon = (parseFloat(tlLon) + parseFloat(brLon)) / 2;
+	  console.log(`[centerLat, centerLon] ${centerLat,centerLon}`)
+  
+	  // Adjust the zoom level based on the distance between the coordinates
+	  const latDiff = Math.abs(parseFloat(tlLat) - parseFloat(brLat));
+	  const lonDiff = Math.abs(parseFloat(tlLon) - parseFloat(brLon));
+	  const maxDiff = Math.max(latDiff, lonDiff);
+	  const zoom = Math.floor(Math.log2(360 / maxDiff)) - 2;
+	  console.log(`[latDiff, lonDiff, maxDiff, zoom]`,latDiff, lonDiff, maxDiff, zoom)
+  
+	  // Convert the center coordinates to tile coordinates
+	  const centerTile = latLonToTile(centerLat, centerLon, zoom);
+	  console.log(`[centertile] `,centerTile)
+  
+	  // Calculate the bounding box for the tile
+	  const tileSize = 256;
+	  const tileBounds = tileToLatLonBounds(centerTile.x, centerTile.y, zoom);
+  
+	  // Calculate the pixel coordinates of the top-left and bottom-right points within the tile
+	  const tlPixel = latLonToPixel(parseFloat(tlLat), parseFloat(tlLon), zoom);
+	  const brPixel = latLonToPixel(parseFloat(brLat), parseFloat(brLon), zoom);
+	  console.log(`[tlPixel,brPixel] `,tlPixel,brPixel)
+  
+	  // Calculate the relative pixel coordinates within the tile
+	  const tlRelativePixel = {
+		x: tlPixel.x - centerTile.x * tileSize,
+		y: tlPixel.y - centerTile.y * tileSize,
+	  };
+	  const brRelativePixel = {
+		x: brPixel.x - centerTile.x * tileSize,
+		y: brPixel.y - centerTile.y * tileSize,
+	  };
+	  console.log(`[tlRelativePixel,brRelativePixel] `,tlRelativePixel,brRelativePixel)
+  
+	  // Fetch the tile image
+	  const tileResponse = await fetch(`http://127.0.0.1:8080/tile/${zoom}/${centerTile.x}/${centerTile.y}.png`);
+	  const tileBuffer = await tileResponse.arrayBuffer();
+  
+	  // Create a sharp instance with the tile image buffer
+	  const sharp = require('sharp');
+	  const image = sharp(Buffer.from(tileBuffer));
+  
+	  // Extract the desired portion of the tile image
+	  const extractedImage = await image
+		.resize(100, 100)
+		.toBuffer();
+  
+	  res.set('Content-Type', 'image/png');
+	  res.set('X-CSE356', CSE356ID);
+	  res.status(200);
+	  res.send(extractedImage);
+	} catch (error) {
+	  console.error('Error fetching tile image:', error);
+	  res.set('X-CSE356', CSE356ID);
+	  res.status(500).send('Error fetching tile image');
+	}
+  });
+  
+  // Helper functions
+  
+  function latLonToTile(lat, lon, zoom) {
+	const latRad = (lat * Math.PI) / 180;
+	const n = Math.pow(2, zoom);
+	const x = Math.floor(((lon + 180) / 360) * n);
+	const y = Math.floor((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * n);
+	return { x, y };
+  }
+  
+  function tileToLatLonBounds(x, y, zoom) {
+	const n = Math.pow(2, zoom);
+	const lonLeft = (x / n) * 360 - 180;
+	const latTop = Math.atan(Math.sinh(Math.PI * (1 - 2 * y / n))) * 180 / Math.PI;
+	const lonRight = ((x + 1) / n) * 360 - 180;
+	const latBottom = Math.atan(Math.sinh(Math.PI * (1 - 2 * (y + 1) / n))) * 180 / Math.PI;
+	return { minLat: latBottom, minLon: lonLeft, maxLat: latTop, maxLon: lonRight };
+  }
+  
+  function latLonToPixel(lat, lon, zoom) {
+	const tileSize = 256;
+	const latRad = (lat * Math.PI) / 180;
+	const n = Math.pow(2, zoom);
+	const x = Math.floor(((lon + 180) / 360) * n * tileSize);
+	const y = Math.floor((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * n * tileSize);
+	return { x, y };
+  }
+
 
 app.get("/", (req, res) => {
 	res.set("X-CSE356", "65e148778849cf2582029a74");

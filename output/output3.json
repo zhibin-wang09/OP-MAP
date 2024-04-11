@@ -1,0 +1,307 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $jRhg3GW8v0',
+  email: 'grader+jRhg3GW8v0@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'Yam11URfdWK6E9_SAVxG'
+}
+login
+/api/adduser {
+  username: 'Grader $jRhg3GW8v0',
+  email: 'grader+jRhg3GW8v0@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'Yam11URfdWK6E9_SAVxG'
+}
+adduser
+grader+jRhg3GW8v0@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+jRhg3GW8v0@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 11,
+  messageTime: 44,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as 986E1272BBC',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+jRhg3GW8v0@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<e337e74d-f64f-484b-b002-77f953ceeed5@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+jRhg3GW8v0@grading.cse356.compas.cs.stonybrook.edu&key=FOHT2qp0kyZ5A2Ov {}
+verify
+/api/adduser {
+  username: 'Grader $jRhg3GW8v0',
+  email: 'grader+jRhg3GW8v0@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'Yam11URfdWK6E9_SAVxG'
+}
+adduser
+grader+jRhg3GW8v0@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $jRhg3GW8v0',
+  email: 'grader+jRhg3GW8v0@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'Yam11URfdWK6E9_SAVxG'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 10 }
+/convert { lat: 42.079758, long: -73.710636, zoom: 10 }
+/tiles/10/287/376.png {}
+Tile response for 10/287/376.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/10/287/376.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/10/287/377.png {}
+Tile response for 10/287/377.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/10/287/377.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/10/287/376.png {}
+Tile response for 10/287/376.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/10/287/376.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 44.271039642111845,
+    minLon: -72.21054071259218,
+    maxLat: 46.590110514561324,
+    maxLon: -69.15418426942374
+  },
+  onlyInBox: true,
+  searchTerm: 'West Kortright'
+}
+/api/route {
+  source: { lat: 40.914199, lon: -73.124678 },
+  destination: { lat: 40.764039, lon: -73.973236 }
+}
+[
+  {
+    description: 'Campus Drive',
+    distance: 58.595,
+    coordinates: { lat: -73.124717, lon: 40.914191 }
+  },
+  {
+    description: 'Campus Drive',
+    distance: 379.853,
+    coordinates: { lat: -73.125205, lon: 40.914151 }
+  },
+  {
+    description: 'Circle Road',
+    distance: 640.999,
+    coordinates: { lat: -73.129352, lon: 40.913239 }
+  },
+  {
+    description: 'Marburger Drive',
+    distance: 890.916,
+    coordinates: { lat: -73.12339, lon: 40.909786 }
+  },
+  {
+    description: 'South Drive',
+    distance: 913.257,
+    coordinates: { lat: -73.121897, lon: 40.902049 }
+  },
+  {
+    description: 'Stony Brook Road',
+    distance: 1404.752,
+    coordinates: { lat: -73.129615, lon: 40.897855 }
+  },
+  {
+    description: 'Hallock Road',
+    distance: 1531.728,
+    coordinates: { lat: -73.123302, lon: 40.88625 }
+  },
+  {
+    description: 'Nesconset Highway',
+    distance: 8133.406,
+    coordinates: { lat: -73.123767, lon: 40.873257 }
+  },
+  {
+    description: 'Hauppauge Boulevard',
+    distance: 574.606,
+    coordinates: { lat: -73.198014, lon: 40.830584 }
+  },
+  {
+    description: '',
+    distance: 85.787,
+    coordinates: { lat: -73.201169, lon: 40.826076 }
+  },
+  {
+    description: 'Townline Road',
+    distance: 1838.376,
+    coordinates: { lat: -73.201846, lon: 40.825559 }
+  },
+  {
+    description: 'Kings Highway',
+    distance: 312.646,
+    coordinates: { lat: -73.218242, lon: 40.815394 }
+  },
+  {
+    description: 'Simeon Woods Road',
+    distance: 962.289,
+    coordinates: { lat: -73.221866, lon: 40.815086 }
+  },
+  {
+    description: '',
+    distance: 50567.002,
+    coordinates: { lat: -73.227188, lon: 40.80822 }
+  },
+  {
+    description: '',
+    distance: 944.438,
+    coordinates: { lat: -73.789151, lon: 40.740269 }
+  },
+  {
+    description: '',
+    distance: 3332.925,
+    coordinates: { lat: -73.8, lon: 40.738518 }
+  },
+  {
+    description: '',
+    distance: 1123.971,
+    coordinates: { lat: -73.838438, lon: 40.743191 }
+  },
+  {
+    description: 'Waldron Street',
+    distance: 271.075,
+    coordinates: { lat: -73.849911, lon: 40.738327 }
+  },
+  {
+    description: '108th Street',
+    distance: 1365.011,
+    coordinates: { lat: -73.852866, lon: 40.739291 }
+  },
+  {
+    description: 'Roosevelt Avenue',
+    distance: 2814.164,
+    coordinates: { lat: -73.858753, lon: 40.750715 }
+  },
+  {
+    description: 'Roosevelt Avenue',
+    distance: 2120.406,
+    coordinates: { lat: -73.891705, lon: 40.746818 }
+  },
+  {
+    description: 'Queens Boulevard',
+    distance: 2011.477,
+    coordinates: { lat: -73.916215, lon: 40.743042 }
+  },
+  {
+    description: 'Queensboro Plaza',
+    distance: 2543.696,
+    coordinates: { lat: -73.937395, lon: 40.748928 }
+  },
+  {
+    description: '',
+    distance: 96.37,
+    coordinates: { lat: -73.963112, lon: 40.760648 }
+  },
+  {
+    description: 'East 60th Street',
+    distance: 835.883,
+    coordinates: { lat: -73.963902, lon: 40.76124 }
+  },
+  {
+    description: '5th Avenue',
+    distance: 113.358,
+    coordinates: { lat: -73.972556, lon: 40.764919 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.97321, lon: 40.764028 }
+  }
+]
+/turn/-73.124717,40.914151/-73.125205,40.914191.png {}
+[tlLat, tlLon] 40.914151
+[brLat, brLon] 40.914191
+[centerLat, centerLon] 40.914170999999996
+[latDiff, lonDiff, maxDiff, zoom] 0.00048799999999005195 0.00004000000000559112 0.00048799999999005195 17
+[centertile]  { x: 80432, y: 105344 }
+[tlPixel,brPixel]  { x: 20590691, y: 26967990 } { x: 20590694, y: 26968147 }
+[tlRelativePixel,brRelativePixel]  { x: 99, y: -74 } { x: 102, y: 83 }
+/turn/-73.972556,40.764028/-73.97321,40.764919.png {}
+[tlLat, tlLon] 40.764028
+[brLat, brLon] 40.764919
+[centerLat, centerLon] 40.7644735
+[latDiff, lonDiff, maxDiff, zoom] 0.0006539999999972679 0.0008909999999957563 0.0008909999999957563 16
+[centertile]  { x: 40188, y: 53217 }
+[tlPixel,brPixel]  { x: 10288349, y: 13623545 } { x: 10288390, y: 13623655 }
+[tlRelativePixel,brRelativePixel]  { x: 221, y: -7 } { x: 262, y: 103 }

@@ -1,0 +1,333 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $S5KPOBIX4h',
+  email: 'grader+S5KPOBIX4h@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'eLkpBKpQzLWcJt_yzS4Y'
+}
+login
+/api/adduser {
+  username: 'Grader $S5KPOBIX4h',
+  email: 'grader+S5KPOBIX4h@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'eLkpBKpQzLWcJt_yzS4Y'
+}
+adduser
+grader+S5KPOBIX4h@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+S5KPOBIX4h@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 11,
+  messageTime: 48,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as C3AE7272BCD',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+S5KPOBIX4h@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<917afd62-a342-7224-510c-cd9f4934fdd3@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+S5KPOBIX4h@grading.cse356.compas.cs.stonybrook.edu&key=0625T2WvBsyCzyI1 {}
+verify
+/api/adduser {
+  username: 'Grader $S5KPOBIX4h',
+  email: 'grader+S5KPOBIX4h@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'eLkpBKpQzLWcJt_yzS4Y'
+}
+adduser
+grader+S5KPOBIX4h@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $S5KPOBIX4h',
+  email: 'grader+S5KPOBIX4h@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'eLkpBKpQzLWcJt_yzS4Y'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 13 }
+Converted x,y 2303 3002
+/convert { lat: 42.079758, long: -73.710636, zoom: 13 }
+Converted x,y 2418 3038
+/tiles/13/2318/3037.png {}
+Tile response for 13/2318/3037.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/13/2318/3037.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/13/2318/3038.png {}
+Tile response for 13/2318/3038.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/13/2318/3038.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/13/2318/3037.png {}
+Tile response for 13/2318/3037.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/13/2318/3037.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 41.56968550884625,
+    minLon: -76.74812577479337,
+    maxLat: 42.431170334785,
+    maxLon: -75.15065847734334
+  },
+  onlyInBox: true,
+  searchTerm: 'Water Island'
+}
+/api/route {
+  source: { lat: 40.74844, lon: -73.98457 },
+  destination: { lat: 40.914199, lon: -73.124678 }
+}
+[
+  {
+    description: 'West 34th Street',
+    distance: 318.83,
+    coordinates: { lat: -73.984569, lon: 40.748441 }
+  },
+  {
+    description: 'Park Avenue',
+    distance: 162.039,
+    coordinates: { lat: -73.981253, lon: 40.74706 }
+  },
+  {
+    description: 'East 36th Street',
+    distance: 517.108,
+    coordinates: { lat: -73.98031, lon: 40.748329 }
+  },
+  {
+    description: '',
+    distance: 156.826,
+    coordinates: { lat: -73.974938, lon: 40.746079 }
+  },
+  {
+    description: '',
+    distance: 2105.342,
+    coordinates: { lat: -73.973193, lon: 40.745607 }
+  },
+  {
+    description: '',
+    distance: 91.314,
+    coordinates: { lat: -73.952521, lon: 40.741355 }
+  },
+  {
+    description: '',
+    distance: 1685.597,
+    coordinates: { lat: -73.951451, lon: 40.741287 }
+  },
+  {
+    description: '',
+    distance: 603.956,
+    coordinates: { lat: -73.932638, lon: 40.737155 }
+  },
+  {
+    description: '',
+    distance: 62584.215,
+    coordinates: { lat: -73.925748, lon: 40.735672 }
+  },
+  {
+    description: '',
+    distance: 1271.608,
+    coordinates: { lat: -73.231766, lon: 40.806919 }
+  },
+  {
+    description: 'Wheeler Road',
+    distance: 2679.828,
+    coordinates: { lat: -73.216816, lon: 40.808494 }
+  },
+  {
+    description: 'Hauppauge Boulevard',
+    distance: 594.074,
+    coordinates: { lat: -73.201215, lon: 40.825603 }
+  },
+  {
+    description: 'Nesconset-Port Jefferson Highway',
+    distance: 8151.29,
+    coordinates: { lat: -73.198236, lon: 40.830336 }
+  },
+  {
+    description: 'Hallock Road',
+    distance: 1553.601,
+    coordinates: { lat: -73.12375, lon: 40.873061 }
+  },
+  {
+    description: 'Stony Brook Road',
+    distance: 1404.752,
+    coordinates: { lat: -73.123302, lon: 40.88625 }
+  },
+  {
+    description: 'South Drive',
+    distance: 913.257,
+    coordinates: { lat: -73.129615, lon: 40.897855 }
+  },
+  {
+    description: 'Marburger Drive',
+    distance: 880.348,
+    coordinates: { lat: -73.121897, lon: 40.902049 }
+  },
+  {
+    description: 'Circle Road',
+    distance: 677.756,
+    coordinates: { lat: -73.123046, lon: 40.909695 }
+  },
+  {
+    description: 'Campus Drive',
+    distance: 431.666,
+    coordinates: { lat: -73.129293, lon: 40.913193 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.124717, lon: 40.914191 }
+  }
+]
+/turn/-73.981253,40.74706/-73.984569,40.748441.png {}
+[tlLat, tlLon] -73.981253
+[brLat, brLon] -73.984569
+[centerLat, centerLon] -73.982911
+[latDiff, lonDiff, maxDiff, zoom] 0.001381000000002075 0.0033159999999980982 0.0033159999999980982 14
+[centertile]  { x: 4824, y: 6157 }
+[tlPixel,brPixel]  { x: 1235207, y: 1576451 } { x: 1235169, y: 1576429 }
+[tlRelativePixel,brRelativePixel]  { x: 263, y: 259 } { x: 225, y: 237 }
+/turn/-73.124717,40.913193/-73.129293,40.914191.png {}
+[tlLat, tlLon] -73.124717
+[brLat, brLon] -73.129293
+[centerLat, centerLon] -73.127005
+[latDiff, lonDiff, maxDiff, zoom] 0.000998000000002719 0.0045760000000001355 0.0045760000000001355 14
+[centertile]  { x: 4863, y: 6147 }
+[tlPixel,brPixel]  { x: 1245187, y: 1573892 } { x: 1245133, y: 1573877 }
+[tlRelativePixel,brRelativePixel]  { x: 259, y: 260 } { x: 205, y: 245 }
+/turn/-73.981253,40.74706/-73.984569,40.748441.png {}
+[tlLat, tlLon] -73.981253
+[brLat, brLon] -73.984569
+[centerLat, centerLon] -73.982911
+[latDiff, lonDiff, maxDiff, zoom] 0.001381000000002075 0.0033159999999980982 0.0033159999999980982 14
+[centertile]  { x: 4824, y: 6157 }
+[tlPixel,brPixel]  { x: 1235207, y: 1576451 } { x: 1235169, y: 1576429 }
+[tlRelativePixel,brRelativePixel]  { x: 263, y: 259 } { x: 225, y: 237 }
+/api/route {
+  source: { lat: 40.9073277, lon: -73.10816942 },
+  destination: { lat: 40.90477, lon: -73.12624 }
+}
+[
+  {
+    description: '',
+    distance: 25.735,
+    coordinates: { lat: -73.108188, lon: 40.907328 }
+  },
+  {
+    description: '',
+    distance: 193.282,
+    coordinates: { lat: -73.108373, lon: 40.90723 }
+  },
+  {
+    description: '',
+    distance: 129.498,
+    coordinates: { lat: -73.110457, lon: 40.906895 }
+  },
+  {
+    description: '',
+    distance: 39.456,
+    coordinates: { lat: -73.1111, lon: 40.90794 }
+  },
+  {
+    description: 'Health Sciences Drive',
+    distance: 2287.78,
+    coordinates: { lat: -73.11153, lon: 40.908013 }
+  },
+  {
+    description: 'Stony Brook Road',
+    distance: 810.154,
+    coordinates: { lat: -73.129615, lon: 40.897855 }
+  },
+  {
+    description: 'Mills Road',
+    distance: 70.089,
+    coordinates: { lat: -73.13204, lon: 40.904766 }
+  },
+  {
+    description: 'Mills Road',
+    distance: 551.759,
+    coordinates: { lat: -73.131217, lon: 40.904865 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.126321, lon: 40.904949 }
+  }
+]

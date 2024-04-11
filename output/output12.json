@@ -1,0 +1,262 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $yJZJ01v7af',
+  email: 'grader+yJZJ01v7af@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'WL8MHX0CMXI-FYC81-Jl'
+}
+login
+/api/adduser {
+  username: 'Grader $yJZJ01v7af',
+  email: 'grader+yJZJ01v7af@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'WL8MHX0CMXI-FYC81-Jl'
+}
+adduser
+grader+yJZJ01v7af@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+yJZJ01v7af@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 13,
+  messageTime: 50,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as 00880272BC1',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+yJZJ01v7af@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<6204321f-6656-2b1c-251c-bdf3eae338af@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+yJZJ01v7af@grading.cse356.compas.cs.stonybrook.edu&key=kH8cdsRs7bR5ZpbT {}
+verify
+/api/adduser {
+  username: 'Grader $yJZJ01v7af',
+  email: 'grader+yJZJ01v7af@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'WL8MHX0CMXI-FYC81-Jl'
+}
+adduser
+grader+yJZJ01v7af@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $yJZJ01v7af',
+  email: 'grader+yJZJ01v7af@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'WL8MHX0CMXI-FYC81-Jl'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 9 }
+Converted x,y 143 187
+/convert { lat: 42.079758, long: -73.710636, zoom: 9 }
+Converted x,y 151 189
+/tiles/9/144/188.png {}
+Tile response for 9/144/188.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/9/144/188.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/9/144/189.png {}
+Tile response for 9/144/189.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/9/144/189.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/9/144/188.png {}
+Tile response for 9/144/188.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/9/144/188.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 44.54916382011939,
+    minLon: -72.44326533940279,
+    maxLat: 46.819762688884886,
+    maxLon: -66.29324410389222
+  },
+  onlyInBox: true,
+  searchTerm: 'Huntersland'
+}
+/api/route {
+  source: { lat: 40.74844, lon: -73.98457 },
+  destination: { lat: 40.911123, lon: -73.13397 }
+}
+[
+  {
+    description: 'West 34th Street',
+    distance: 318.83,
+    coordinates: { lat: -73.984569, lon: 40.748441 }
+  },
+  {
+    description: 'Park Avenue',
+    distance: 162.039,
+    coordinates: { lat: -73.981253, lon: 40.74706 }
+  },
+  {
+    description: 'East 36th Street',
+    distance: 517.108,
+    coordinates: { lat: -73.98031, lon: 40.748329 }
+  },
+  {
+    description: '',
+    distance: 156.826,
+    coordinates: { lat: -73.974938, lon: 40.746079 }
+  },
+  {
+    description: '',
+    distance: 2105.342,
+    coordinates: { lat: -73.973193, lon: 40.745607 }
+  },
+  {
+    description: '',
+    distance: 91.314,
+    coordinates: { lat: -73.952521, lon: 40.741355 }
+  },
+  {
+    description: '',
+    distance: 1685.597,
+    coordinates: { lat: -73.951451, lon: 40.741287 }
+  },
+  {
+    description: '',
+    distance: 603.956,
+    coordinates: { lat: -73.932638, lon: 40.737155 }
+  },
+  {
+    description: '',
+    distance: 62584.215,
+    coordinates: { lat: -73.925748, lon: 40.735672 }
+  },
+  {
+    description: '',
+    distance: 1271.608,
+    coordinates: { lat: -73.231766, lon: 40.806919 }
+  },
+  {
+    description: 'Wheeler Road',
+    distance: 2679.828,
+    coordinates: { lat: -73.216816, lon: 40.808494 }
+  },
+  {
+    description: 'Hauppauge Boulevard',
+    distance: 11025.445,
+    coordinates: { lat: -73.201215, lon: 40.825603 }
+  },
+  {
+    description: 'Stony Brook Road',
+    distance: 326.292,
+    coordinates: { lat: -73.138785, lon: 40.906978 }
+  },
+  {
+    description: 'Stony Brook Road',
+    distance: 275.255,
+    coordinates: { lat: -73.135072, lon: 40.907405 }
+  },
+  {
+    description: 'Mount Road',
+    distance: 224.994,
+    coordinates: { lat: -73.135472, lon: 40.909743 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.133962, lon: 40.911137 }
+  }
+]
+/turn/-73.981253,40.74706/-73.984569,40.748441.png {}
+[tlLat, tlLon] 40.74706
+[brLat, brLon] 40.748441
+[centerLat, centerLon] 40.747750499999995
+[latDiff, lonDiff, maxDiff, zoom] 0.0033159999999980982 0.001381000000002075 0.0033159999999980982 14
+[centertile]  { x: 10046, y: 13305 }
+[tlPixel,brPixel]  { x: 2571889, y: 3406253 } { x: 2571905, y: 3406393 }
+[tlRelativePixel,brRelativePixel]  { x: 113, y: 173 } { x: 129, y: 313 }
+/turn/-73.133962,40.909743/-73.135472,40.911137.png {}
+[tlLat, tlLon] 40.909743
+[brLat, brLon] 40.911137
+[centerLat, centerLon] 40.910439999999994
+[latDiff, lonDiff, maxDiff, zoom] 0.0015099999999961256 0.0013939999999976749 0.0015099999999961256 15
+[centertile]  { x: 20107, y: 26339 }
+[tlPixel,brPixel]  { x: 5147570, y: 6742739 } { x: 5147602, y: 6742861 }
+[tlRelativePixel,brRelativePixel]  { x: 178, y: -45 } { x: 210, y: 77 }
+/turn/-73.981253,40.74706/-73.984569,40.748441.png {}
+[tlLat, tlLon] 40.74706
+[brLat, brLon] 40.748441
+[centerLat, centerLon] 40.747750499999995
+[latDiff, lonDiff, maxDiff, zoom] 0.0033159999999980982 0.001381000000002075 0.0033159999999980982 14
+[centertile]  { x: 10046, y: 13305 }
+[tlPixel,brPixel]  { x: 2571889, y: 3406253 } { x: 2571905, y: 3406393 }
+[tlRelativePixel,brRelativePixel]  { x: 113, y: 173 } { x: 129, y: 313 }

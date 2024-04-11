@@ -1,0 +1,150 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $G-XJ8w8RLJ',
+  email: 'grader+G-XJ8w8RLJ@grading.cse356.compas.cs.stonybrook.edu',
+  password: '1JTCGlb9ZuI_kCr2Q6US'
+}
+login
+/api/adduser {
+  username: 'Grader $G-XJ8w8RLJ',
+  email: 'grader+G-XJ8w8RLJ@grading.cse356.compas.cs.stonybrook.edu',
+  password: '1JTCGlb9ZuI_kCr2Q6US'
+}
+adduser
+grader+G-XJ8w8RLJ@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+G-XJ8w8RLJ@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 3,
+  messageTime: 44,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as 7DF99272BB8',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+G-XJ8w8RLJ@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<3611af2a-87a4-75b9-1044-6e9c30b672e6@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+G-XJ8w8RLJ@grading.cse356.compas.cs.stonybrook.edu&key=wKH6khEGFHgtfs56 {}
+verify
+/api/adduser {
+  username: 'Grader $G-XJ8w8RLJ',
+  email: 'grader+G-XJ8w8RLJ@grading.cse356.compas.cs.stonybrook.edu',
+  password: '1JTCGlb9ZuI_kCr2Q6US'
+}
+adduser
+grader+G-XJ8w8RLJ@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $G-XJ8w8RLJ',
+  email: 'grader+G-XJ8w8RLJ@grading.cse356.compas.cs.stonybrook.edu',
+  password: '1JTCGlb9ZuI_kCr2Q6US'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 15 }
+/convert { lat: 42.079758, long: -73.710636, zoom: 15 }
+/tiles/15/9616/12010.png {}
+Tile response for 15/9616/12010.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9616/12010.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/15/9616/12011.png {}
+Tile response for 15/9616/12011.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9616/12011.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/15/9616/12010.png {}
+Tile response for 15/9616/12010.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9616/12010.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 44.63485541685852,
+    minLon: -78.8002841375401,
+    maxLat: 46.97169892193216,
+    maxLon: -78.48257730333532
+  },
+  onlyInBox: false,
+  searchTerm: 'Butlerville'
+}

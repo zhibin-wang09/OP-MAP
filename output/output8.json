@@ -1,0 +1,152 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $cCB8lbsQy1',
+  email: 'grader+cCB8lbsQy1@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'M3QPpURDu8YE_4ER6KNN'
+}
+login
+/api/adduser {
+  username: 'Grader $cCB8lbsQy1',
+  email: 'grader+cCB8lbsQy1@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'M3QPpURDu8YE_4ER6KNN'
+}
+adduser
+grader+cCB8lbsQy1@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+cCB8lbsQy1@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 12,
+  messageTime: 48,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as B1225272BAB',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+cCB8lbsQy1@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<8dcc0206-fbb3-053a-69a8-7a30fca161a2@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+cCB8lbsQy1@grading.cse356.compas.cs.stonybrook.edu&key=TT9DPsuESI5XkBxU {}
+verify
+/api/adduser {
+  username: 'Grader $cCB8lbsQy1',
+  email: 'grader+cCB8lbsQy1@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'M3QPpURDu8YE_4ER6KNN'
+}
+adduser
+grader+cCB8lbsQy1@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $cCB8lbsQy1',
+  email: 'grader+cCB8lbsQy1@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'M3QPpURDu8YE_4ER6KNN'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 15 }
+Converted x,y 9214 12008
+/convert { lat: 42.079758, long: -73.710636, zoom: 15 }
+Converted x,y 9674 12154
+/tiles/15/9242/12077.png {}
+Tile response for 15/9242/12077.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9242/12077.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/15/9242/12078.png {}
+Tile response for 15/9242/12078.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9242/12078.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/15/9242/12077.png {}
+Tile response for 15/9242/12077.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9242/12077.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 43.5870555322301,
+    minLon: -74.89142363163526,
+    maxLat: 45.44839633621278,
+    maxLon: -70.96931722518352
+  },
+  onlyInBox: false,
+  searchTerm: 'Adams Cove'
+}

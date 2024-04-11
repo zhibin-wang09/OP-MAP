@@ -1,0 +1,150 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $Yb5V5RwGd3',
+  email: 'grader+Yb5V5RwGd3@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'r4oLYSdCb3QUn7N34Qym'
+}
+login
+/api/adduser {
+  username: 'Grader $Yb5V5RwGd3',
+  email: 'grader+Yb5V5RwGd3@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'r4oLYSdCb3QUn7N34Qym'
+}
+adduser
+grader+Yb5V5RwGd3@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+Yb5V5RwGd3@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 11,
+  messageTime: 45,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as 159FE272BAB',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+Yb5V5RwGd3@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<8675c4b5-90b0-68e8-1b77-e1b20dfaa128@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+Yb5V5RwGd3@grading.cse356.compas.cs.stonybrook.edu&key=gfNleShf7c7nOenX {}
+verify
+/api/adduser {
+  username: 'Grader $Yb5V5RwGd3',
+  email: 'grader+Yb5V5RwGd3@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'r4oLYSdCb3QUn7N34Qym'
+}
+adduser
+grader+Yb5V5RwGd3@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $Yb5V5RwGd3',
+  email: 'grader+Yb5V5RwGd3@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'r4oLYSdCb3QUn7N34Qym'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 10 }
+/convert { lat: 42.079758, long: -73.710636, zoom: 10 }
+/tiles/10/297/375.png {}
+Tile response for 10/297/375.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/10/297/375.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/10/297/376.png {}
+Tile response for 10/297/376.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/10/297/376.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/10/297/375.png {}
+Tile response for 10/297/375.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/10/297/375.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 43.780110309637145,
+    minLon: -77.7806748832411,
+    maxLat: 44.09654614928295,
+    maxLon: -76.52075546330646
+  },
+  onlyInBox: false,
+  searchTerm: 'Randall'
+}

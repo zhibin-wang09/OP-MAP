@@ -1,0 +1,207 @@
+
+> op-mapu@1.0.0 start
+> node server.js
+
+map server started
+Postgres client connected
+Mongodb client connected
+/api/login {
+  username: 'Grader $HciA2Us-3p',
+  email: 'grader+HciA2Us-3p@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'V3_AO8KFP2KFpDOIUBbO'
+}
+login
+/api/adduser {
+  username: 'Grader $HciA2Us-3p',
+  email: 'grader+HciA2Us-3p@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'V3_AO8KFP2KFpDOIUBbO'
+}
+adduser
+grader+HciA2Us-3p@grading.cse356.compas.cs.stonybrook.edu
+success sending email: {
+  accepted: [ 'grader+HciA2Us-3p@grading.cse356.compas.cs.stonybrook.edu' ],
+  rejected: [],
+  ehlo: [
+    'PIPELINING',
+    'SIZE 10240000',
+    'VRFY',
+    'ETRN',
+    'ENHANCEDSTATUSCODES',
+    '8BITMIME',
+    'DSN',
+    'SMTPUTF8',
+    'CHUNKING'
+  ],
+  envelopeTime: 10,
+  messageTime: 48,
+  messageSize: 543,
+  response: '250 2.0.0 Ok: queued as 9E717272BC9',
+  envelope: {
+    from: 'root@cse356.compas.cs.stonybrook.edu',
+    to: [ 'grader+HciA2Us-3p@grading.cse356.compas.cs.stonybrook.edu' ]
+  },
+  messageId: '<032eadd4-b91e-fe53-5d1c-e8bcbfc64bbf@cse356.compas.cs.stonybrook.edu>'
+}
+/api/verify?email=grader+HciA2Us-3p@grading.cse356.compas.cs.stonybrook.edu&key=Lk0ixsG0bTUVhUKo {}
+verify
+/api/adduser {
+  username: 'Grader $HciA2Us-3p',
+  email: 'grader+HciA2Us-3p@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'V3_AO8KFP2KFpDOIUBbO'
+}
+adduser
+grader+HciA2Us-3p@grading.cse356.compas.cs.stonybrook.edu
+/api/login {
+  username: 'Grader $HciA2Us-3p',
+  email: 'grader+HciA2Us-3p@grading.cse356.compas.cs.stonybrook.edu',
+  password: 'V3_AO8KFP2KFpDOIUBbO'
+}
+login
+/ {}
+/convert { lat: 43.2562, long: -78.764415, zoom: 15 }
+Converted x,y 9214 12008
+/convert { lat: 42.079758, long: -73.710636, zoom: 15 }
+Converted x,y 9674 12154
+/tiles/15/9566/12023.png {}
+Tile response for 15/9566/12023.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9566/12023.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/15/9566/12024.png {}
+Tile response for 15/9566/12024.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9566/12024.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/tiles/15/9566/12023.png {}
+Tile response for 15/9566/12023.png: Response {
+  size: 0,
+  timeout: 0,
+  [Symbol(Body internals)]: {
+    body: PassThrough {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: true,
+      [Symbol(kCapture)]: false,
+      [Symbol(kCallback)]: null
+    },
+    disturbed: true,
+    error: null
+  },
+  [Symbol(Response internals)]: {
+    url: 'http://127.0.0.1:8080/tile/15/9566/12023.png',
+    status: 200,
+    statusText: 'OK',
+    headers: Headers { [Symbol(map)]: [Object: null prototype] },
+    counter: 0
+  }
+}
+/api/search {
+  bbox: {
+    minLat: 44.620043831928655,
+    minLon: -73.532350500077,
+    maxLat: 45.33532719935795,
+    maxLon: -73.21347299703883
+  },
+  onlyInBox: true,
+  searchTerm: 'Flint'
+}
+/api/route {
+  source: { lat: 40.919979, lon: -73.128481 },
+  destination: { lat: 40.91285415, lon: -73.1239866 }
+}
+[
+  {
+    description: '',
+    distance: 7.56,
+    coordinates: { lat: -73.128506, lon: 40.91999 }
+  },
+  {
+    description: '',
+    distance: 22.812,
+    coordinates: { lat: -73.128552, lon: 40.919932 }
+  },
+  {
+    description: 'Circle Road',
+    distance: 1145.631,
+    coordinates: { lat: -73.128304, lon: 40.919848 }
+  },
+  {
+    description: 'Engineering Drive',
+    distance: 279.242,
+    coordinates: { lat: -73.126299, lon: 40.911093 }
+  },
+  {
+    description: '',
+    distance: 0,
+    coordinates: { lat: -73.123988, lon: 40.912855 }
+  }
+]
+/turn/-73.128506,40.919932/-73.128552,40.91999.png {}
+[tlLat, tlLon] 40.919932
+[brLat, brLon] 40.91999
+[centerLat, centerLon] 40.919961
+[latDiff, lonDiff, maxDiff, zoom] 0.000045999999997548 0.000057999999995672624 0.000057999999995672624 20
+[centertile]  { x: 643476, y: 842787 }
+[tlPixel,brPixel]  { x: 164729840, y: 215753659 } { x: 164729884, y: 215753777 }
+[tlRelativePixel,brRelativePixel]  { x: -16, y: 187 } { x: 28, y: 305 }
+/turn/-73.123988,40.911093/-73.126299,40.912855.png {}
+[tlLat, tlLon] 40.911093
+[brLat, brLon] 40.912855
+[centerLat, centerLon] 40.911974
+[latDiff, lonDiff, maxDiff, zoom] 0.002311000000005947 0.0017619999999993752 0.002311000000005947 15
+[centertile]  { x: 20107, y: 26336 }
+[tlPixel,brPixel]  { x: 5147601, y: 6741939 } { x: 5147642, y: 6742124 }
+[tlRelativePixel,brRelativePixel]  { x: 209, y: -77 } { x: 250, y: 108 }
+/turn/-73.128506,40.919932/-73.128552,40.91999.png {}
+[tlLat, tlLon] 40.919932
+[brLat, brLon] 40.91999
+[centerLat, centerLon] 40.919961
+[latDiff, lonDiff, maxDiff, zoom] 0.000045999999997548 0.000057999999995672624 0.000057999999995672624 20
+[centertile]  { x: 643476, y: 842787 }
+[tlPixel,brPixel]  { x: 164729840, y: 215753659 } { x: 164729884, y: 215753777 }
+[tlRelativePixel,brRelativePixel]  { x: -16, y: 187 } { x: 28, y: 305 }

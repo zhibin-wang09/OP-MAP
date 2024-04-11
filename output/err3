@@ -1,0 +1,4 @@
+Error fetching tile image: Error: extract_area: bad extract area
+    at Sharp.toBuffer (/root/OP-MAP/node_modules/sharp/lib/output.js:161:17)
+    at /root/OP-MAP/server.js:361:4
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
