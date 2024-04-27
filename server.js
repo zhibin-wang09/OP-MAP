@@ -6,8 +6,8 @@ const { MongoClient } = require("mongodb");
 var rand = require("random-key");
 var nodemailer = require("nodemailer");
 var session = require('express-session');
-const ip_address = "194.113.75.144";
-const uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.3";
+const ip_address = "209.94.58.38";
+const uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.5";
 const mongoClient = new MongoClient(uri); // creates the client to interact with the mongodb database
 let is_login = false;
 const CSE356ID = '65e148778849cf2582029a74';
@@ -43,63 +43,100 @@ app.post("/api/search", async (req, res) => {
   const { minLat, minLon, maxLat, maxLon } = bbox;
 
   let selectClause = onlyInBox
-    ? `SELECT name, ST_AsGeoJSON(ST_Centroid(ST_Intersection(way, ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)))) AS coordinates, ST_AsGeoJSON(ST_Envelope(way)) AS bbox`
-    : `SELECT name, ST_AsGeoJSON(ST_Centroid(way)) AS coordinates, ST_AsGeoJSON(ST_Envelope(way)) AS bbox`;
+    ? `SELECT DISTINCT name, ST_AsGeoJSON(ST_Centroid(ST_Intersection(sub.way, ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)))) AS coordinates, ST_AsGeoJSON(ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)) AS bbox`
+    : `SELECT DISTINCT name, ST_AsGeoJSON(ST_Centroid(sub.way)) AS coordinates, ST_AsGeoJSON(ST_Envelope(sub.way)) AS bbox`;
 
   let sqlQuery = `${selectClause}
     FROM (
-      SELECT name, way FROM planet_osm_point WHERE name ILIKE $1
+      SELECT name, way FROM planet_osm_point WHERE name LIKE $1
       UNION ALL
-      SELECT name, way FROM planet_osm_roads WHERE name ILIKE $1
+      SELECT name, way FROM planet_osm_roads WHERE name LIKE $1
       UNION ALL
-      SELECT name, way FROM planet_osm_line WHERE name ILIKE $1
+      SELECT name, way FROM planet_osm_line WHERE name LIKE $1
       UNION ALL
-      SELECT name, way FROM planet_osm_polygon WHERE name ILIKE $1
+      SELECT name, way FROM planet_osm_polygon WHERE name LIKE $1
     ) AS sub`;
 
   if (onlyInBox) {
     sqlQuery += ` WHERE sub.way && ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)`;
   }
+  sqlQuery+=`\nLIMIT 30`
 
   try {
     const result = await client.query(sqlQuery, [`%${searchTerm}%`]); // Parameterized query to prevent SQL injection
     const formattedResults = result.rows.map((row) => {
       // Parse GeoJSON safely
-      const coordinatesGeoJSON = JSON.parse(row.coordinates);
-      const bboxGeoJSON = JSON.parse(row.bbox);
+      	const coordinatesGeoJSON = JSON.parse(row.coordinates);
+    	const bboxGeoJSON = JSON.parse(row.bbox);
+		var lat=null;
+		var lon=null;
+		var minLat=null;
+		var minLon=null;
+		var maxLat=null;
+		var maxLon=null;
 
-      let lat,
-        lon,
-        minLat = Infinity,
-        maxLat = -Infinity,
-        minLon = Infinity,
-        maxLon = -Infinity;
 
-      // Extract coordinates for 'Point'
-      if (coordinatesGeoJSON.type === "Point") {
-        [lon, lat] = coordinatesGeoJSON.coordinates;
-      }
-
-      // Assuming bbox is a 'Polygon' and extracting its bounds
-      if (
-        bboxGeoJSON.type === "Polygon" &&
-        bboxGeoJSON.coordinates.length > 0
-      ) {
-        for (let coord of bboxGeoJSON.coordinates[0]) {
-          const [longitude, latitude] = coord;
-          minLat = Math.min(minLat, latitude);
-          maxLat = Math.max(maxLat, latitude);
-          minLon = Math.min(minLon, longitude);
-          maxLon = Math.max(maxLon, longitude);
-        }
-      }
-
-      return {
-        name: row.name,
-        coordinates:
-          lat !== undefined && lon !== undefined ? { lat, lon } : undefined,
-        bbox: isFinite(minLat) ? { minLat, minLon, maxLat, maxLon } : undefined,
-      };
+		lon=coordinatesGeoJSON.coordinates[0];
+		lat=coordinatesGeoJSON.coordinates[1];
+		if(bboxGeoJSON.type=="Point"){
+			maxLon=bboxGeoJSON.coordinates[0];
+			minLon=bboxGeoJSON.coordinates[0];
+			maxLat=bboxGeoJSON.coordinates[1];
+			minLat=bboxGeoJSON.coordinates[1];
+		}
+		else if(bboxGeoJSON.type=="Polygon"){
+			maxLon=Math.max(
+				bboxGeoJSON.coordinates[0][0][0],
+				bboxGeoJSON.coordinates[0][1][0],
+				bboxGeoJSON.coordinates[0][2][0],
+				bboxGeoJSON.coordinates[0][3][0],
+			);
+			minLon=Math.min(
+				bboxGeoJSON.coordinates[0][0][0],
+				bboxGeoJSON.coordinates[0][1][0],
+				bboxGeoJSON.coordinates[0][2][0],
+				bboxGeoJSON.coordinates[0][3][0],
+			);
+			maxLat=Math.max(
+				bboxGeoJSON.coordinates[0][0][1],
+				bboxGeoJSON.coordinates[0][1][1],
+				bboxGeoJSON.coordinates[0][2][1],
+				bboxGeoJSON.coordinates[0][3][1],
+			);
+			minLat=Math.min(
+				bboxGeoJSON.coordinates[0][0][1],
+				bboxGeoJSON.coordinates[0][1][1],
+				bboxGeoJSON.coordinates[0][2][1],
+				bboxGeoJSON.coordinates[0][3][1],
+			);
+		}
+		console.log({
+			name:row.name,
+			coordinates: {
+				lat: lat,
+				lon: lon
+			},
+			bbox: {
+				minLat: minLat,
+				minLon: minLon,
+				maxLat: maxLat,
+				maxLon: maxLon
+			},
+		})
+	  
+    	return {
+			name:row.name,
+			coordinates: {
+				lat: lat,
+				lon: lon
+			},
+			bbox: {
+				minLat: minLat,
+				minLon: minLon,
+				maxLat: maxLat,
+				maxLon: maxLon
+			},
+		};
     });
     res.set("X-CSE356", CSE356ID);
     res.status(200).json(formattedResults);
@@ -132,22 +169,23 @@ app.get("/tiles/:z/:x/:y.png", async (req, res) => {
 	}
 });
 
+prev=null;
+
 app.post("/convert", (req, res) => {
-	const { zoom, lat, long } = req.body;
+        const { zoom, lat, long } = req.body;
 
-	const latRad = (lat * Math.PI) / 180;
-	const n = Math.pow(2, zoom);
-	const xtile = Math.floor(n * ((long + 180) / 360)); //  'long' to 'lon'
-	const ytile = Math.floor(
-	    ((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2) * n
-	);
+        const latRad = (lat * Math.PI) / 180;
+        const n = Math.pow(2, zoom);
+        const xtile = Math.floor(n * ((long + 180) / 360)); //  'long' to 'lon'
+        const ytile = Math.floor(
+            ((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2) * n
+        );
 
-	const tileCoordinate = {
-		x_tile: xtile,
-		y_tile: ytile,
-	};
-	console.log("Converted x,y",xtile,ytile)
-
+        const tileCoordinate = {
+                x_tile: xtile,
+                y_tile: ytile,
+        };
+        console.log("Converted x,y",xtile,ytile)
 	res.set("X-CSE356", "65e148778849cf2582029a74");
 	res.status(200).json(tileCoordinate);
 });
@@ -155,6 +193,50 @@ app.post("/convert", (req, res) => {
 function encodePlus(url) {
 	return url.replace(/ /g, "+");
 }
+
+
+app.post("/api/address", async (req, res) => {
+	const { lat, lon } = req.body;
+  
+	try {
+	  const result = await client.query(`
+		SELECT tags
+		FROM (
+		  SELECT osm_id, way FROM planet_osm_point
+		  WHERE ST_DWithin(way, ST_SetSRID(ST_MakePoint($1, $2), 4326), 0.0001)
+		  UNION ALL
+		  SELECT osm_id, way FROM planet_osm_roads
+		  WHERE ST_DWithin(way, ST_SetSRID(ST_MakePoint($1, $2), 4326), 0.0001)
+		  UNION ALL
+		  SELECT osm_id, way FROM planet_osm_polygon
+		  WHERE ST_DWithin(way, ST_SetSRID(ST_MakePoint($1, $2), 4326), 0.0001)
+		) AS nearby
+		JOIN planet_osm_point ON nearby.osm_id = planet_osm_point.osm_id
+		LIMIT 1;
+	  `, [lon, lat]);
+  
+	  if (result.rows.length === 0) {
+		res.set("X-CSE356", CSE356ID);
+		return res.status(404).json({ error: "Address not found" });
+	  }
+  
+	  const tags = result.rows[0].tags;
+	  const address = {
+		number: tags.addr_housenumber || "",
+		street: tags.addr_street || "",
+		city: tags.addr_city || "",
+		state: tags.addr_state || "",
+		country: tags.addr_country || "",
+	  };
+  
+	  res.set("X-CSE356", CSE356ID);
+	  res.status(200).json(address);
+	} catch (error) {
+	  console.error("Error executing query:", error);
+	  res.set("X-CSE356", CSE356ID);
+	  res.status(500).json({ error: "Internal Server Error" });
+	}
+  });
 
 app.get("/test", function (req, res) {
 	console.log("test");
@@ -278,7 +360,7 @@ app.post('/api/route', async function(req,res){
 	const destination_lon = req.body.destination.lon;	
 
 	const routeResponse = await fetch(
-		`http://194.113.75.144:8989/route?point=${source_lat},${source_lon}&point=${destination_lat},${destination_lon}&profile=car&points_encoded=false`);
+		`http://209.151.152.200:8989/route?point=${source_lat},${source_lon}&point=${destination_lat},${destination_lon}&profile=car&points_encoded=false`);
 	const result = await routeResponse.json();
 	//console.log(JSON.stringify(result,null,4));
 	const coordinates = result.paths[0].points.coordinates; // the lat and lon for the roads in instruction
