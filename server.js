@@ -170,7 +170,10 @@ app.get("/tiles/:z/:x/:y.png", async (req, res) => {
 prev=null;
 
 app.post("/convert", (req, res) => {
-        const { zoom, lat, long } = req.body;
+        var { zoom, lat, long } = req.body;
+
+		lat=40.754932;
+		long=-73.984016;
 
         const latRad = (lat * Math.PI) / 180;
         const n = Math.pow(2, zoom);
