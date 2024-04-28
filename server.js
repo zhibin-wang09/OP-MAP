@@ -43,18 +43,16 @@ app.post("/api/search", async (req, res) => {
   const { minLat, minLon, maxLat, maxLon } = bbox;
 
   let selectClause = onlyInBox
-    ? `SELECT DISTINCT name, ST_AsGeoJSON(ST_Centroid(ST_Intersection(sub.way, ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)))) AS coordinates, ST_AsGeoJSON(ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)) AS bbox`
-    : `SELECT DISTINCT name, ST_AsGeoJSON(ST_Centroid(sub.way)) AS coordinates, ST_AsGeoJSON(ST_Envelope(sub.way)) AS bbox`;
+    ? `SELECT DISTINCT name, ST_AsGeoJSON(ST_Transform(ST_Centroid(ST_Intersection(sub.way, ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326))),4326)) AS coordinates, ST_AsGeoJSON(ST_Transform(ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)),4326)) AS bbox`
+    : `SELECT DISTINCT name, ST_AsGeoJSON(ST_Transform(ST_Centroid(sub.way),4326)) AS coordinates, ST_AsGeoJSON(ST_Transform(ST_Envelope(sub.way),4326)) AS bbox`;
 
   let sqlQuery = `${selectClause}
     FROM (
-      SELECT name, way FROM planet_osm_point WHERE name LIKE $1
+      SELECT DISTINCT name, way FROM planet_osm_point WHERE name LIKE $1
       UNION ALL
-      SELECT name, way FROM planet_osm_roads WHERE name LIKE $1
+      SELECT DISTINCT name, way FROM planet_osm_line WHERE name LIKE $1
       UNION ALL
-      SELECT name, way FROM planet_osm_line WHERE name LIKE $1
-      UNION ALL
-      SELECT name, way FROM planet_osm_polygon WHERE name LIKE $1
+      SELECT DISTINCT name, way FROM planet_osm_polygon WHERE name LIKE $1
     ) AS sub`;
 
   if (onlyInBox) {
@@ -482,7 +480,7 @@ app.get("/", (req, res) => {
 	res.status(200).json({ status: "ok" });
 });
 
-app.listen(3000, "0.0.0.0", async () => {
+app.listen(80, "0.0.0.0", async () => {
 	console.log("map server started");
 	await client.connect();
 	await mongoClient.connect();
