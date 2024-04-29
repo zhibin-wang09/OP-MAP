@@ -43,8 +43,8 @@ app.post("/api/search", async (req, res) => {
   const { minLat, minLon, maxLat, maxLon } = bbox;
 
   let selectClause = onlyInBox
-    ? `SELECT DISTINCT name, ST_AsGeoJSON(ST_Transform(ST_Centroid(ST_Intersection(sub.way, ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326))),4326)) AS coordinates, ST_AsGeoJSON(ST_Transform(ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)),4326)) AS bbox`
-    : `SELECT DISTINCT name, ST_AsGeoJSON(ST_Transform(ST_Centroid(sub.way),4326)) AS coordinates, ST_AsGeoJSON(ST_Transform(ST_Envelope(sub.way),4326)) AS bbox`;
+    ? `SELECT DISTINCT sub.name, ST_AsGeoJSON(ST_Transform(ST_Centroid(ST_Intersection(sub.way, ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326))),4326)) AS coordinates, ST_AsGeoJSON(ST_Transform(ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326),4326)) AS bbox`
+    : `SELECT DISTINCT sub.name, ST_AsGeoJSON(ST_Transform(ST_Centroid(sub.way),4326)) AS coordinates, ST_AsGeoJSON(ST_Transform(ST_Envelope(sub.way),4326)) AS bbox`;
 
   let sqlQuery = `${selectClause}
     FROM (
@@ -53,12 +53,13 @@ app.post("/api/search", async (req, res) => {
       SELECT DISTINCT name, way FROM planet_osm_line WHERE name LIKE $1
       UNION ALL
       SELECT DISTINCT name, way FROM planet_osm_polygon WHERE name LIKE $1
+      UNION ALL
+      SELECT DISTINCT name, way FROM planet_osm_roads WHERE name LIKE $1
     ) AS sub`;
 
   if (onlyInBox) {
     sqlQuery += ` WHERE sub.way && ST_MakeEnvelope(${minLon}, ${minLat}, ${maxLon}, ${maxLat}, 4326)`;
   }
-  sqlQuery+=`\nLIMIT 30`
 
   try {
     const result = await client.query(sqlQuery, [`%${searchTerm}%`]); // Parameterized query to prevent SQL injection
@@ -172,8 +173,8 @@ prev=null;
 app.post("/convert", (req, res) => {
         var { zoom, lat, long } = req.body;
 
-		lat=40.754932;
-		long=-73.984016;
+		lat=40.837390;
+		long=-74.522535;
 
         const latRad = (lat * Math.PI) / 180;
         const n = Math.pow(2, zoom);
@@ -354,29 +355,45 @@ app.get("/api/user", async function(req,res){
 });
 
 app.post('/api/route', async function(req,res){
-	if(!is_login) return res.status(200).json({status: "ERROR"});
+	//if(!is_login) return res.status(200).json({status: "ERROR"});
 	const source_lat = req.body.source.lat;	
 	const source_lon = req.body.source.lon;	
 	const destination_lat = req.body.destination.lat;	
 	const destination_lon = req.body.destination.lon;	
 
 	const routeResponse = await fetch(
-		`http://209.151.152.200:8989/route?point=${source_lat},${source_lon}&point=${destination_lat},${destination_lon}&profile=car&points_encoded=false`);
+		`http://209.151.152.200:5000/route/v1/driving/${source_lon},${source_lat};${destination_lon},${destination_lat}?steps=true&geometries=geojson`
+	);
 	const result = await routeResponse.json();
+	var path=result.routes[0].legs[0].steps;
+	var route=path.map((step)=>{
+		return{
+			"description": step.name,
+			"distance": step.distance,
+			"coordinates": {
+				"lat": step.geometry.coordinates[0][1],
+				"lon": step.geometry.coordinates[0][0],
+			}
+		}
+	});
 	//console.log(JSON.stringify(result,null,4));
+	/*
 	const coordinates = result.paths[0].points.coordinates; // the lat and lon for the roads in instruction
 	const instructions = result.paths[0].instructions; // the list of roads to take to get the destination
 	const route = [];
+	result.paths.forEach((element) => console.log(`Distance ${element.distance}`));
+	result.paths.forEach((element) => console.log(`Time ${element.time}`));
 	instructions.map((road) => {
 		route.push({
 			"description": road.street_name,
 			"distance": road.distance,
 			"coordinates": {
-				"lat": coordinates[road.interval[0]][0],
-				"lon": coordinates[road.interval[0]][1],
+				"lat": coordinates[road.interval[0]][1],
+				"lon": coordinates[road.interval[0]][0],
 			}
 		})
 	})
+	*/
 	console.log(route);
 	res.set("X-CSE356", CSE356ID);
 	return res.status(200).json(route);
@@ -384,10 +401,12 @@ app.post('/api/route', async function(req,res){
 
 app.get('/turn/:tl/:br.png', async (req, res) => {
 	try {
-	  const [tlLon,tlLat] = req.params.tl.split(',');
+	  const [tlLat,tlLon] = req.params.tl.split(',');
 	  console.log(`[tlLat, tlLon] ${tlLat,tlLon}`)
-	  const [brLon,brLat] = req.params.br.split(',');
+	  const [brLat,brLon] = req.params.br.split(',');
 	  console.log(`[brLat, brLon] ${brLat, brLon}`)
+
+
   
 	  // Calculate the center coordinates
 	  const centerLat = (parseFloat(tlLat) + parseFloat(brLat)) / 2;
